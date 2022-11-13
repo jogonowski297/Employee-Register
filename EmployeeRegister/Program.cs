@@ -16,10 +16,13 @@ namespace EmployessRegister
             office_worker.city = "Gdansk";
             office_worker.iq = 100;
 
+            
+
 
             Console.WriteLine($"Surname: {office_worker.surname}\nCity: {office_worker.city}\nIQ: {office_worker.iq}");
 
 
         }
+
     }
 }
