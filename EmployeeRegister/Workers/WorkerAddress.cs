@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeRegister.Workers
 {
-    public class WorkerAddress
+    public struct WorkerAddress
     {
-        private string street;
-        public string num_building;
-        public string num_apartment;
-        public string city;
+        private string street { get; set; }
+        public string num_building { get; set; }
+        public string num_apartment { get; set; }
+        public string city { get; set; }
     }
 }
