@@ -10,40 +10,36 @@ using System.Threading.Tasks;
 namespace EmployeeRegister.Registry
 {
     public class RegistryWorkers
-    {
-        Dictionary<int, OfficeWorker> officeWorker_dict = new();
-        Dictionary<int, PhysicalWorker> physicalWorker_dict = new();
-        Dictionary<int, Trader> trader_dict = new();
-
-        public void addOfficeWorkerToDist(OfficeWorker office_worker)
-        {
-            officeWorker_dict.Add(office_worker.id, office_worker);
-        }
-        public void addPhysicalWorkerToDist(PhysicalWorker physical_worker)
-        {
-            physicalWorker_dict.Add(physical_worker.id, physical_worker);
-        }
-        public void addTraderToDist(Trader trader)
-            
-        {
-            trader_dict.Add(trader.id, trader);
-        }
-
- 
-        private static PropertyInfo[] GetProperties(object obj)
-        {
-            return obj.GetType().GetProperties();
-        }
+    { 
+        Dictionary<int, Worker> register = new();
 
 
-        public void printOfficeWorkers()
+
+        public void addWorkerToDictionary(params Worker[] obj)
         {
-            foreach (var w in officeWorker_dict.Values)
+            foreach (Worker worker in obj)
+                register.Add(worker.id, worker);
+        }
+
+        public void removeWorkerFromDictionary(int id)
+        {
+            register.Remove(id);
+        }
+
+        public void test()
+        {
+            foreach (var obj in register.Values)
             {
-                Console.WriteLine($"id: {w.id} name: {w.name} surname: {w.surname} age: {w.age}");
+                var o = obj as OfficeWorker;
+                var o2 = obj as PhysicalWorker;
+                if (o != null)
+                    Console.WriteLine($"DSADASD: {o.name}");
+                if (o2 != null)
+                    Console.WriteLine($"111: {o2.name}");
+
             }
+            
         }
 
-      
     }
 }

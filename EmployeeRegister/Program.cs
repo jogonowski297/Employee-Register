@@ -15,29 +15,47 @@ namespace EmployessRegister
 
             RegistryWorkers registry = new RegistryWorkers();
 
-            registry.addOfficeWorkerToDist(new OfficeWorker() 
-            {
-                id=getIDCounter(),
-                name="Jan",
-                surname="Kowalski",
-                age = 34
-            });
 
-            registry.addOfficeWorkerToDist(new OfficeWorker()
+            registry.addWorkerToDictionary(new OfficeWorker()
             {
                 id = getIDCounter(),
-                name = "Anna",
-                surname = "Nowak",
-                age = 24
-            });
+                name = "Jan",
+                surname = "Kowalski",
+                age = 34,
+                iq = 100
+            }) ;
 
-            registry.addOfficeWorkerToDist(new OfficeWorker()
+            registry.addWorkerToDictionary(new OfficeWorker()
             {
                 id = getIDCounter(),
-                name = "Piotr",
-                surname = "Piotrowski",
-                age = 40
+                name = "Tom",
+                surname = "Stiff",
+                age = 23,
+                iq = 120
             });
+
+            registry.addWorkerToDictionary(new OfficeWorker()
+            {
+                id = getIDCounter(),
+                name = "John",
+                surname = "Boobo",
+                age = 24,
+                iq = 96
+            });
+
+            registry.addWorkerToDictionary(new PhysicalWorker()
+            {
+                id = getIDCounter(),
+                name = "John",
+                surname = "Boobo",
+                age = 24,
+                physical_strenght = "good"
+            });
+
+            registry.removeWorkerFromDictionary(2);
+
+            registry.test();
+
 
 
         }
