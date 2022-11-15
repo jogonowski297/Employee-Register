@@ -8,6 +8,6 @@ namespace EmployeeRegister.Workers
 {
     public class PhysicalWorker : Worker
     {
-        public string physical_strenght;
+        public int physical_strenght;
     }
 }

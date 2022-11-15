@@ -12,11 +12,11 @@ namespace EmployeeRegister.Workers
         public string name { get; set; }
         public string surname { get; set; }
         public int age { get; set; }
-        public string experience { get; set; }
+        public int experience { get; set; }
 
         public string street { get; set; }
-        public string num_building { get; set; }
-        public string num_apartment { get; set; }
+        public int num_building { get; set; }
+        public int num_apartment { get; set; }
         public string city { get; set; }
 
     }

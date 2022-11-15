@@ -9,7 +9,7 @@ namespace EmployeeRegister.Workers
 {
     public class OfficeWorker : Worker
     {
-        public int office_ID { get; set; }
+        public string office_ID { get; set; }
         public int iq { get; set; }
 
     }

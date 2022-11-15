@@ -9,6 +9,6 @@ namespace EmployeeRegister.Workers
     public class Trader : Worker
     {
         public string effectiveness;
-        public string commission_amount;
+        public int commission_amount;
     }
 }
