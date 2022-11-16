@@ -11,7 +11,7 @@ namespace EmployeeRegister.Registry
 {
     public class RegistryWorkers
     { 
-        Dictionary<int, Worker> register = new();
+        public Dictionary<int, Worker> register = new();
 
         public void addWorkerToDictionary(params Worker[] obj)
         {
