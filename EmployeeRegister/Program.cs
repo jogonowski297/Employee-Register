@@ -53,8 +53,8 @@ namespace EmployessRegister
                 id = getIDCounter(),
                 name = "Imie3",
                 surname = "Zwariowany",
-                age = 25,
-                experience = 14,
+                age = 22,
+                experience = 12,
                 street = "Prosta",
                 num_building = 2,
                 num_apartment = 4,
@@ -68,20 +68,20 @@ namespace EmployessRegister
                 id = getIDCounter(),
                 name = "Imie4",
                 surname = "Currk",
-                age = 44,
-                experience = 15,
+                age = 22,
+                experience = 12,
                 street = "Prosta",
                 num_building = 2,
                 num_apartment = 4,
                 city = "Gdansk",
-                physical_strenght = 50
+                physical_strenght = 20
             }, new PhysicalWorker()
             {
                 id = getIDCounter(),
                 name = "Imie5",
                 surname = "Borek",
-                age = 33,
-                experience = 16,
+                age = 23,
+                experience = 12,
                 street = "Prosta",
                 num_building = 2,
                 num_apartment = 4,
@@ -173,7 +173,16 @@ namespace EmployessRegister
             //registry.getWorkersFromCity("Gdansk");
             //Console.WriteLine("\n");
             //registry.getWorkersFromCity("Torun");
-            registry.valueForCorporation();
+            //registry.valueForCorporation();
+            List<Dictionary<string, string>> sortList = registry.sortRegistry();
+            string doswiadczenie = "Doswiadczenie";
+            string wiek = "Wiek";
+            string nazwisko = "Nazwisko";
+
+            for (int i=0; i<sortList.Count;i++)
+            {
+                Console.WriteLine($"Doświadczenie: {sortList[i][doswiadczenie]} , Wiek: {sortList[i][wiek]} ,  Nazwisko: {sortList[i][nazwisko]} ");
+            }
 
 
 
