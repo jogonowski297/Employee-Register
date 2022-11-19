@@ -166,23 +166,48 @@ namespace EmployessRegister
                 commission_amount = 10
             });
 
-            //registry.test();
-            //registry.sortRegistryByExperienceToLow();
-            //registry.sortRegistryByAgeToUp();
-            //registry.sortRegistryBySurname();
-            //registry.getWorkersFromCity("Gdansk");
-            //Console.WriteLine("\n");
-            //registry.getWorkersFromCity("Torun");
-            //registry.valueForCorporation();
-            List<Dictionary<string, string>> sortList = registry.sortRegistry();
-            string doswiadczenie = "Doswiadczenie";
-            string wiek = "Wiek";
-            string nazwisko = "Nazwisko";
+            Console.WriteLine("Sortowanie po liczbie lat doświadczenia (malejąco): ");
+            registry.sortRegistryByExperienceToLow();
 
-            for (int i=0; i<sortList.Count;i++)
+            Console.WriteLine("\nSortowanie po wieku (rosnaco): ");
+            registry.sortRegistryByAgeToUp();
+
+            Console.WriteLine("\nSortowanie po nazwisku (alfabetycznie): ");
+            registry.sortRegistryBySurname();
+
+
+            Console.WriteLine("\nWyświetlanie pracowników z Gdańska: ");
+            var cityListGdansk = registry.getWorkersFromCity("Gdansk");
+            for (int i = 0; i < cityListGdansk.Count; i++)
             {
-                Console.WriteLine($"Doświadczenie: {sortList[i][doswiadczenie]} , Wiek: {sortList[i][wiek]} ,  Nazwisko: {sortList[i][nazwisko]} ");
+                Console.WriteLine($"Imię: {cityListGdansk[i]["Imię"]} , Nazwisko: {cityListGdansk[i]["Nazwisko"]} ,  Miejscowosc: {cityListGdansk[i]["Miescowość"]} ");
             }
+
+
+            Console.WriteLine("\nWyświetlanie pracowników z Torunia: ");
+            var cityListTorun = registry.getWorkersFromCity("Torun");
+            for (int i = 0; i < cityListTorun.Count; i++)
+            {
+                Console.WriteLine($"Imię: {cityListTorun[i]["Imię"]} , Nazwisko: {cityListTorun[i]["Nazwisko"]} ,  Miejscowosc: {cityListTorun[i]["Miescowość"]} ");
+            }
+
+
+            Console.WriteLine("\nSortowanie po liczbie lat doświadczenia (malejąco): ");
+            var cityListValue = registry.valueForCorporation();
+            for (int i = 0; i < cityListValue.Count; i++)
+            {
+                Console.WriteLine($"Imię: {cityListValue[i]["Imię"]} , Nazwisko: {cityListValue[i]["Nazwisko"]} ,  Wartość: {cityListValue[i]["Wartosc"]} ");
+            }
+
+            //List<Dictionary<string, string>> sortList = registry.sortRegistry();
+            //string doswiadczenie = "Doswiadczenie";
+            //string wiek = "Wiek";
+            //string nazwisko = "Nazwisko";
+
+            //for (int i = 0; i < sortList.Count; i++)
+            //{
+            //    Console.WriteLine($"Doświadczenie: {sortList[i][doswiadczenie]} , Wiek: {sortList[i][wiek]} ,  Nazwisko: {sortList[i][nazwisko]} ");
+            //}
 
 
 

@@ -54,6 +54,48 @@ namespace EmployeeRegister.InitTests
         }
 
         [Test]
+        public void checkWrongIQ()
+        {
+
+            bool check = registry.addWorkerToDictionary(new OfficeWorker()
+            {
+                id = getIDCounter(),
+                name = "nowy",
+                surname = "NOWY",
+                age = 40,
+                experience = 8,
+                street = "D³uga",
+                num_building = 2,
+                num_apartment = 4,
+                city = "Torun",
+                office_ID = $"{getOfficeIDCounter}a",
+                iq = 1500
+            });
+            Assert.That(check, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void checkWrongStrenght()
+        {
+
+            bool check = registry.addWorkerToDictionary(new PhysicalWorker()
+            {
+                id = getIDCounter(),
+                name = "nowy3",
+                surname = "NOWY3",
+                age = 69,
+                experience = 2,
+                street = "Leœna",
+                num_building = 2,
+                num_apartment = 4,
+                city = "Warszawa",
+                physical_strenght = 1500
+            });
+            Assert.That(check, Is.EqualTo(false));
+        }
+
+
+        [Test]
         public void removeWorker()
         {
             registry.addWorkerToDictionary(new OfficeWorker()

@@ -13,10 +13,28 @@ namespace EmployeeRegister.Registry
     { 
         public Dictionary<int, Worker> register = new();
 
-        public void addWorkerToDictionary(params Worker[] obj)
+        public bool addWorkerToDictionary(params Worker[] obj)
         {
+
+
             foreach (Worker worker in obj)
+            {
+                var ow = worker as OfficeWorker;
+                var fw = worker as PhysicalWorker;
+                var t = worker as Trader;
+
+                if (ow != null)
+                    if (!checkIQ(ow.iq))
+                        return false;
+
+                if (fw != null)
+                    if (!checkStrenght(fw.physical_strenght))
+                        return false;
+
+
                 register.Add(worker.id, worker);
+            }
+            return true;
         }
 
         public void removeWorkerFromDictionary(int id)
@@ -24,27 +42,18 @@ namespace EmployeeRegister.Registry
             register.Remove(id);
         }
 
-        public void test()
+        public bool checkIQ(int iq)
         {
+            if (iq >= 70 && iq <= 150)
+                return true;
+            return false;
+        }
 
-            foreach (var obj in register.Keys)
-            {
- 
-                var o = register[obj] as OfficeWorker;
-                var o2 = register[obj] as PhysicalWorker;
-                var o3 = register[obj] as Trader;
-
-                if (o != null)
-                    Console.WriteLine($"OfficeWorker: {o.name}, Obj: {obj}");
-
-                if (o2 != null)
-                    Console.WriteLine($"PhysicalWorker: {o2.name}, Obj: {obj}");
-
-                if (o3 != null)
-                    Console.WriteLine($"Trader: {o3.name}, Obj: {obj}");
-
-            }
-            
+        public bool checkStrenght(int strenght)
+        {
+            if (strenght >= 1 && strenght <= 100)
+                return true;
+            return false;
         }
 
         public List<Dictionary<string, string>> sortRegistry()
@@ -67,30 +76,26 @@ namespace EmployeeRegister.Registry
 
         public void sortRegistryByExperienceToLow()
         {
-            Console.WriteLine("SORT Experience:");
             foreach (var item in register.OrderByDescending(i => i.Value.experience))
             {
-                Console.WriteLine($"{item.Value.experience}");
+                Console.WriteLine($"{item.Value.name} {item.Value.surname} {item.Value.experience}");
             }
         }
 
         public void sortRegistryByAgeToUp()
         {
-
-            Console.WriteLine("SORT Age:");
             foreach (var item in register.OrderBy(i => i.Value.age))
             {
                 
-                Console.WriteLine($"{item.Value.age}");
+                Console.WriteLine($"{item.Value.name} {item.Value.surname} {item.Value.age}");
             }
         }
 
         public void sortRegistryBySurname()
         {
-            Console.WriteLine("SORT surname:");
             foreach (var item in register.OrderBy(i => i.Value.surname))
             {
-                Console.WriteLine($"{item.Value.surname}");
+                Console.WriteLine($"{item.Value.name} {item.Value.surname}");
             }
         }
 
@@ -176,7 +181,6 @@ namespace EmployeeRegister.Registry
                 {
                     string pw_value = Decimal.Divide(pw.experience * pw.physical_strenght, pw.age).ToString("N3");
 
-                    Console.WriteLine(pw_value);
                     valueList.Add(new Dictionary<string, string>());
                     valueList[valueList.Count - 1].Add("Imię", pw.name);
                     valueList[valueList.Count - 1].Add("Nazwisko", pw.surname);
